@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-  <app-slide *ngFor="let x of items">
+  <app-slide *ngFor="let x of items" (slideLeft)="onLeft()" (slideRight)="onRight()">
     <app-slide-foreground>Hello</app-slide-foreground>
     <app-slide-background-left>Left</app-slide-background-left>
     <app-slide-background-right>Right</app-slide-background-right>
@@ -37,4 +37,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   items = Array(10);
+
+  onLeft() {
+    console.log('left');
+  }
+
+  onRight() {
+    console.log('right');
+  }
 }
