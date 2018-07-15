@@ -8,20 +8,25 @@ import {
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-slide-content',
+  selector: 'app-slide-drawer',
   template: `<ng-content></ng-content>`,
   styles: [
     `
       :host {
         display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
         width: 100%;
         transition: 100ms all;
       }
     `
   ]
 })
-export class SlideContentComponent implements AfterViewChecked {
+export class SlideDrawerComponent implements AfterViewChecked {
   width: number;
+  left: number;
+  right: number;
 
   private _transformX: any;
   @Input()
@@ -38,8 +43,14 @@ export class SlideContentComponent implements AfterViewChecked {
   constructor(public el: ElementRef, public sanitizer: DomSanitizer) {}
 
   ngAfterViewChecked() {
-    const { width } = this.el.nativeElement.getBoundingClientRect();
+    const {
+      width,
+      left,
+      right
+    } = this.el.nativeElement.getBoundingClientRect();
 
     this.width = width;
+    this.left = left;
+    this.right = right;
   }
 }

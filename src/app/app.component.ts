@@ -4,22 +4,33 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
   <app-slide *ngFor="let x of items">
-    <section>
-      Hello
-    </section>
+    <app-slide-foreground>Hello</app-slide-foreground>
+    <app-slide-background-left>Left</app-slide-background-left>
+    <app-slide-background-right>Right</app-slide-background-right>
   </app-slide>
   `,
   styles: [
     `
-      section {
-        padding: 1em;
-        background-color: tomato;
-        color: white;
-        text-align: center;
+      :host {
+        display: block;
+        margin: 1em;
       }
 
       app-slide {
         margin-bottom: 1px;
+      }
+
+      app-slide-foreground {
+        background-color: tomato;
+        color: white;
+      }
+
+      app-slide-background-left {
+        background-color: yellow;
+      }
+
+      app-slide-background-right {
+        background-color: aliceblue;
       }
     `
   ]
